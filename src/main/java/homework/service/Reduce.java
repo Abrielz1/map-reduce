@@ -16,8 +16,6 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class Reduce implements Runnable {
 
-    private final int number;
-
     private final List<File> files;
 
     private final CountDownLatch latch;
