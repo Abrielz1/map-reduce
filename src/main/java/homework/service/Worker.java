@@ -4,7 +4,6 @@ import homework.model.KeyValue;
 import homework.model.PATHS;
 import homework.model.Request;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-@Slf4j
 @RequiredArgsConstructor
 public class Worker implements Runnable {
 
