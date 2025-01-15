@@ -12,5 +12,11 @@ public enum PATHS {
         public String toString() {
             return "src/main/resources/processed/";
         }
+    },
+
+    RESULT{
+       public String toString() {
+           return "src/main/resources/result/";
+       }
     }
 }
