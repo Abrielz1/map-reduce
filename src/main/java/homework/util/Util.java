@@ -18,19 +18,6 @@ public class Util {
     @SneakyThrows
     public static List<File> getFilesList(Path path, String type) {
 
-//        List<File> result = new ArrayList<>();
-//
-//        DirectoryStream<Path> stream = Files.newDirectoryStream(path, type);
-//
-//        for (Path iter : stream) {
-//
-//            if (iter.toFile().getName().contains(type)) {
-//                result.add(iter.toFile());
-//            }
-//        }
-//
-//        return result;
-
         DirectoryStream.Filter<Path> filter = Files::isRegularFile;
 
         List<File> resultList = new ArrayList<>();
