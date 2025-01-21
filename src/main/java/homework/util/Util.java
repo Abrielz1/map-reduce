@@ -2,12 +2,15 @@ package homework.util;
 
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 @UtilityClass
 public class Util {
@@ -15,17 +18,35 @@ public class Util {
     @SneakyThrows
     public static List<File> getFilesList(Path path, String type) {
 
-        List<File> result = new ArrayList<>();
+//        List<File> result = new ArrayList<>();
+//
+//        DirectoryStream<Path> stream = Files.newDirectoryStream(path, type);
+//
+//        for (Path iter : stream) {
+//
+//            if (iter.toFile().getName().contains(type)) {
+//                result.add(iter.toFile());
+//            }
+//        }
+//
+//        return result;
 
-        DirectoryStream<Path> stream = Files.newDirectoryStream(path, type);
+        DirectoryStream.Filter<Path> filter = Files::isRegularFile;
 
-        for (Path iter : stream) {
+        List<File> resultList = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path, filter)) {
+            for (Path entry : stream) {
+                File file = entry.toFile();
+                if (file.getName().contains(type)) {
+                    resultList.add(file);
 
-            if (iter.toFile().getName().contains(type)) {
-                result.add(iter.toFile());
+                }
             }
+
+        }catch(IOException e){
+            e.printStackTrace();
         }
 
-        return result;
+        return resultList;
     }
 }

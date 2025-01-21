@@ -11,7 +11,7 @@ import static homework.util.Util.getFilesList;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        List<File> beginFiles = getFilesList(Paths.get("src/main/resources/input"), ".txt");
+        List<File> beginFiles = getFilesList(Paths.get("src/main/resources/files"), ".txt");
         Coordinator coordinator = new Coordinator(beginFiles, 2);
 
         List<Request> taskRequests = coordinator.mapToWorkerRequest(beginFiles, 2);
