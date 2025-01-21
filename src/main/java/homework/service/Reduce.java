@@ -1,6 +1,5 @@
 package homework.service;
 
-import homework.model.PATHS;
 import lombok.RequiredArgsConstructor;
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +50,6 @@ public class Reduce implements Runnable {
         return list;
     }
 
-
     private synchronized Map<String, List<String>> dataManipulator(List<String> list) {
 
         Map<String, List<String>> map = new TreeMap<>();
@@ -82,6 +80,6 @@ public class Reduce implements Runnable {
 
     private void writer(List<String> List) throws IOException {
 
-        Files.write(Paths.get(PATHS.RESULT + "result"), List);
+        Files.write(Paths.get("src/main/resources/files/result/"+ "reduce-result"), List);
     }
 }

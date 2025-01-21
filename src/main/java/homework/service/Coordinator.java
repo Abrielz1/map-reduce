@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
+
 import static homework.util.Util.getFilesList;
 
 @RequiredArgsConstructor
@@ -18,6 +21,17 @@ public class Coordinator {
     private final List<File> files;
 
     private final int workersCount;
+
+    public List<Request> mapToWorkerRequest(List<File> files, int taskReduce) {
+
+        return files.stream()
+                .map(file -> new Request(
+                        UUID.randomUUID(),
+                        file.getName(),
+                        file,
+                        taskReduce
+                )).collect(Collectors.toList());
+    }
 
     public void map(List<Request> list) {
 
@@ -39,7 +53,7 @@ public class Coordinator {
 
         List<File> list = getFilesList(Paths.get(PATHS.PROCESSED.toString()), "mr-");
         Map<String, List<File>> map = this.dataManipulator(list);
-        CountDownLatch latch = new CountDownLatch(map.keySet().size());
+        CountDownLatch latch = new CountDownLatch(map.size());
         List<Thread> threads = new ArrayList<>();
 
         for (Map.Entry<String, List<File>> iter : map.entrySet()) {

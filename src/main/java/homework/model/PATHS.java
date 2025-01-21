@@ -10,13 +10,13 @@ public enum PATHS {
 
     PROCESSED {
         public String toString() {
-            return "src/main/resources/processed/";
+            return "src/main/resources/files/processed/";
         }
     },
 
     RESULT{
        public String toString() {
-           return "src/main/resources/result/";
+           return "src/main/resources/files/result/";
        }
     }
 }
