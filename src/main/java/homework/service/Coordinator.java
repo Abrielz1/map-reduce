@@ -53,7 +53,7 @@ public class Coordinator {
 
         List<File> list = getFilesList(Paths.get(PATHS.PROCESSED.toString()), "mr-");
         Map<String, List<File>> map = this.dataManipulator(list);
-        CountDownLatch latch = new CountDownLatch(map.keySet().size());
+        CountDownLatch latch = new CountDownLatch(map.size());
         List<Thread> threads = new ArrayList<>();
 
         for (Map.Entry<String, List<File>> iter : map.entrySet()) {

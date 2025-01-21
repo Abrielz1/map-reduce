@@ -1,6 +1,5 @@
 package homework.service;
 
-import homework.model.PATHS;
 import lombok.RequiredArgsConstructor;
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +49,6 @@ public class Reduce implements Runnable {
 
         return list;
     }
-
 
     private synchronized Map<String, List<String>> dataManipulator(List<String> list) {
 
