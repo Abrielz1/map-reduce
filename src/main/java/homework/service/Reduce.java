@@ -82,6 +82,6 @@ public class Reduce implements Runnable {
 
     private void writer(List<String> List) throws IOException {
 
-        Files.write(Paths.get(PATHS.RESULT + "files/result"), List);
+        Files.write(Paths.get("src/main/resources/files/result/"+ "reduce-result"), List);
     }
 }
