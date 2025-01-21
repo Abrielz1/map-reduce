@@ -4,7 +4,7 @@ public enum PATHS {
 
     FILES {
         public String toString() {
-            return "src/main/resources/files/";
+            return "src/main/resources/";
         }
     },
 
